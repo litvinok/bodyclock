@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bodyclock</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= content_for?(:title) ? yield(:title) : "BodyClock" %></title>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :modernizr %>
+
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
 <body>
 
-<%= yield %>
+
+
+<div class="container">
+  <div class="row">
+
+    <h2>BodyClock</h2>
+
+    <div class="navbar">
+      <ul>
+        <li><a href="#">Авторизоваться</a></li>
+        <li><%= link_to "О проекте", about_path %> </li>
+      </ul>
+    </div>
+
+
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

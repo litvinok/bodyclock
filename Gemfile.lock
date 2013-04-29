@@ -40,7 +40,9 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    gumby-rails (1.1)
+    gumby-framework (0.0.1)
+      jquery-rails
+      modernizr-rails
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -53,6 +55,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    modernizr-rails (2.6.2.1)
     mongoid (3.0.23)
       activemodel (~> 3.1)
       moped (~> 1.2)
@@ -114,8 +117,9 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  gumby-rails
+  gumby-framework
   jquery-rails
+  modernizr-rails
   mongoid (~> 3.0.0)
   rails (= 3.2.13)
   rails-i18n
