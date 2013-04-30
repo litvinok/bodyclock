@@ -30,4 +30,5 @@ Bodyclock::Application.configure do
   config.assets.debug = true
 
   config.i18n.available_locales = [:ru, :en]
+
 end

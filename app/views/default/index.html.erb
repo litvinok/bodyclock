@@ -1,1 +1,11 @@
 
+<% if current_user %>
+
+    Привет, <%= current_user.name %>
+
+<% else %>
+
+    <h3>Авторизация</h3>
+    <div class="medium default btn"><%= link_to "Google", "/auth/google_oauth2" %></div>
+
+<% end %>
