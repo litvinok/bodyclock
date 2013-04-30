@@ -5,17 +5,18 @@ class SessionsController < ApplicationController
 
     user = User.find_or_initialize_by( :uid => auth[:uid], :provider => auth[:provider] )
 
-    user.refresh_token = auth["credentials"]["refresh_token"]
-    user.access_token = auth["credentials"]["token"]
-    user.expires = auth["credentials"]["expires_at"]
-    user.name = auth["info"]["name"]
-    user.email = auth["info"]["email"]
-    user.avatar = auth["info"]["image"]
+    user.refresh_token = auth[ :credentials ][ :refresh_token ]
+    user.access_token = auth[ :credentials ][ :token ]
+    user.expires = auth[ :credentials ][ :expires_at ]
 
-    if auth["extra"] &&  auth["extra"]["raw_info"]
-      user.gender = auth["extra"]["raw_info"]["gender"]
-      user.birthday = auth["extra"]["raw_info"]["birthday"]
-      user.locale = auth["extra"]["raw_info"]["locale"]
+    user.name = auth[ :info ][ :name ]
+    user.email = auth[ :info ][ :email ]
+    user.avatar = auth[ :info ][ :image ]
+
+    if raw_info = auth[ :extra ][ :raw_info ]
+      [ :gender, :birthday, :locale ].each do |item|
+        user[item] = raw_info[item] if raw_info[item]
+      end
     end
 
     url = session[:return_to] || root_path
