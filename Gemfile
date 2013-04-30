@@ -10,7 +10,6 @@ gem 'rails-i18n'
 
 gem "mongoid", "~> 3.0.0"
 
-gem "omniauth", "~> 1.1.4"
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 gem "omniauth-yandex", "~> 0.0.2"
