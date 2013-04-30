@@ -87,6 +87,10 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    omniauth-vkontakte (1.2.0)
+      multi_json
+      omniauth (~> 1.1.0)
+      omniauth-oauth2 (~> 1.0)
     origin (1.1.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -147,6 +151,7 @@ DEPENDENCIES
   mongoid (~> 3.0.0)
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-vkontakte (~> 1.2.0)
   rails (= 3.2.13)
   rails-i18n
   sass-rails (~> 3.2.3)
