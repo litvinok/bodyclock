@@ -16,4 +16,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   provider :facebook, "358854700893028", "4b4b0fcbb0eb5d1a358a524204b947f7",
            :scope => 'email,user_birthday,read_stream'
+
+  provider :vkontakte, "3628707", "PqmjnTMxi5STNwOu1rKQ",
+           :scope => 'friends,audio,photos'
 end
