@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
     url = session[:return_to] || root_path
     session[:return_to] = nil
-    url = root_path if url.eql?('/logout')
+    url = root_path if url.eql?(signout_path)
 
     if user.save
       session[:user_id] = user.id

@@ -24,10 +24,6 @@
 
         <div class="navbar">
             <ul>
-                <% if current_user %>
-                    <li><%= link_to current_user.name, signout_path %></li>
-                    <li><%= link_to "Выход", signout_path %></li>
-                <% end %>
                 <li><%= link_to "О проекте", about_path %> </li>
             </ul>
         </div>

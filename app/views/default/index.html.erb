@@ -1,7 +1,35 @@
 
-<% if current_user %>
+<% if auth %>
 
-    Привет, <%= current_user.name %>
+    <div class="row">
+
+        <div class="nine columns">
+
+
+
+        </div>
+
+        <div class="three columns">
+
+            <h3 class="row">
+              <div class="two columns image"><img src="<%= auth.avatar %>" gumby-retina/></div>
+              <div class="ten columns">&nbsp;<%= auth.name %></div>
+            </h3>
+
+
+            <div class="medium default btn"><a href="">Настройки</a></div>
+            <div class="medium default btn"><%= link_to "Выход", signout_path %></div>
+
+            <hr>
+
+            <ul>
+              <li><a href="#">Календарь</a></li>
+              <li><a href="#">Что-то еще</a></li>
+            </ul>
+
+        </div>
+
+    </div>
 
 <% else %>
 
