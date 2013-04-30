@@ -12,6 +12,7 @@ gem "mongoid", "~> 3.0.0"
 
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
+gem "omniauth-yandex"
 gem "omniauth-vkontakte", "~> 1.2.0"
 
 # Gems used only for assets and not required

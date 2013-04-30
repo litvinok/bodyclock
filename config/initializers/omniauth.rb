@@ -1,4 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
+
   provider :google_oauth2,
 
            # ## http://epbyminsd3162t1.minsk.epam.com:3000/auth/google_oauth2/callback
@@ -13,6 +14,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
              :scope => "userinfo.email,userinfo.profile,plus.me,http://gdata.youtube.com",
              :approval_prompt => "auto"
            }
+
+  provider :yandex, "979e4559c7734a638222a41851fb6ab6", " e97b9ae77dab447ca7d1bbbb5b39906b"
 
   provider :facebook, "358854700893028", "4b4b0fcbb0eb5d1a358a524204b947f7",
            :scope => 'email,user_birthday,read_stream'
