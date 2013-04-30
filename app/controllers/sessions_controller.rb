@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 
   def create
-    auth = request.env["omniauth.auth"]
 
+    auth = request.env["omniauth.auth"]
     user = User.find_or_initialize_by( :uid => auth[:uid], :provider => auth[:provider] )
 
     user.refresh_token = auth[ :credentials ][ :refresh_token ]
@@ -13,13 +13,13 @@ class SessionsController < ApplicationController
     user.email = auth[ :info ][ :email ]
     user.avatar = auth[ :info ][ :image ]
 
-    if auth[ :extra ][ :raw_info ][ :gender ]
-      user.gender = auth[ :extra ][ :raw_info ][ :gender ]
-    end
+    #if auth[ :extra ][ :raw_info ][ :gender ]
+    #  user.gender = auth[ :extra ][ :raw_info ][ :gender ]
+    #end
 
-    if auth[ :extra ][ :raw_info ][ :birthday ]
-      user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
-    end
+    #if auth[ :extra ][ :raw_info ][ :birthday ]
+    #  user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
+    #end
 
     url = session[:return_to] || root_path
     session[:return_to] = nil
@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
     else
       raise "Failed to login"
     end
+
   end
 
   def destroy

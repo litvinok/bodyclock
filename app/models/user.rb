@@ -12,7 +12,6 @@ class User
   field :avatar, type: String
   field :gender, type: String
   field :birthday, type: Date
-  field :locale, type: String
 
   index({ uid: 1, provider: 1 }, { unique: true })
 end
