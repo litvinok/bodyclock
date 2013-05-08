@@ -1,3 +1,37 @@
 // Place all the styles related to the default controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.calendar .week div,
+.calendar .legend div,{
+  width: 13.5%;
+  float: left;
+  margin: 0 0.7857% 0.7857% 0;
+}
+
+.calendar .legend {
+  margin-top: 1rem;
+  color: rgba(0,0,0, 0.3%);
+}
+
+.calendar .week div {
+  height: 80px;
+  background: rgba(0,0,0,0.05%);
+  padding: 0px 5px;
+}
+
+.calendar .week div.prev,
+.calendar .week div.next,
+{
+  opacity: 0.4;
+}
+
+.calendar .week div.today {
+  background: lighten(royalblue, 10%);
+  color: white
+}
+
+.right {
+  float: right;
+}
