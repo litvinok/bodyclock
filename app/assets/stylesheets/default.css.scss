@@ -28,10 +28,32 @@
 }
 
 .calendar .week div.today {
-  background: lighten(royalblue, 10%);
+  background: lighten(darkorange, 10%);
   color: white
 }
 
 .right {
   float: right;
+}
+
+.navbar li.current {
+  background: lighten(black, 27%);
+}
+
+.footer {
+  font-size: 10pt;
+  margin: 5em 0 1em;
+  padding: 1em 0 0;
+  border-top: 1px solid #ededed;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+.footer p {
+  margin-top: .8em;
+  font-size: 8pt;
 }

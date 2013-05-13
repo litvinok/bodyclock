@@ -23,13 +23,26 @@
         <h2>BodyClock</h2>
 
         <div class="navbar">
+
+            <% @menu = { request.fullpath => 'current'}  %>
+
             <ul>
-                <li><%= link_to "О проекте", about_path %> </li>
+                <li class="<%= @menu[root_path] %>"><%= link_to "Календарь", root_path %> </li>
+                <li class="<%= @menu[about_path] %>"><%= link_to "О проекте", about_path %> </li>
             </ul>
         </div>
 
 
         <%= yield %>
+    </div>
+
+    <div class="footer">
+      <strong>:</strong>Litvinok &copy; 2013. All right reserved.
+
+      <p>
+        Копирование и распространение информации только с разрешения автора.<br>
+        Вся информация предоставленная пользователями является конфиденциальной.
+      </p>
     </div>
 </div>
 
