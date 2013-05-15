@@ -56,6 +56,7 @@ Bodyclock::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 
+  match "/:year/:month/:day" => 'default#event'
   match "/:year/:month" => 'default#index'
 
   # See how all your routes lay out with "rake routes"

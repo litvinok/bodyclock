@@ -13,5 +13,7 @@ class User
   field :gender, type: String
   field :birthday, type: Date
 
+  has_many :event
+
   index({ uid: 1, provider: 1 }, { unique: true })
 end

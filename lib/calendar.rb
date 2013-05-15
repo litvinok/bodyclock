@@ -100,6 +100,8 @@ module Calendar
   def get_day(day, options = {} )
     {
         :day => day.mday,
+        :month => day.month,
+        :year => day.year,
         :w => day.wday,
         :weekend => is_weekend(day),
         :today => is_today(day)
