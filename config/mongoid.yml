@@ -8,15 +8,6 @@ development:
       hosts:
         - dharma.mongohq.com:10088
 
-test:
-  sessions:
-      default:
-        database: bodyclock
-        username: bodyclock
-        password: ra5sieY6
-        hosts:
-          - dharma.mongohq.com:10088
-
 production:
   sessions:
       default:

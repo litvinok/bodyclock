@@ -29,6 +29,6 @@ Bodyclock::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.i18n.available_locales = [:ru, :en]
+  config.i18n.available_locales = :ru
 
 end
