@@ -2,11 +2,11 @@
 development:
   sessions:
     default:
-      database: bodyclock
+      database: bodyclock_dev
       username: bodyclock
       password: ra5sieY6
       hosts:
-        - dharma.mongohq.com:10088
+        - dharma.mongohq.com:10022
 
 production:
   sessions:
