@@ -15,16 +15,12 @@ class SessionsController < ApplicationController
     user.email = auth[ :info ][ :email ]
     user.avatar = auth[ :info ][ :image ]
 
-    if auth[ :extra ] && auth[ :extra ][ :raw_info ]
+    begin
+      user.gender = auth[ :extra ][ :raw_info ][ :gender ]
+    end
 
-      if auth[ :extra ][ :raw_info ][ :gender ]
-        user.gender = auth[ :extra ][ :raw_info ][ :gender ]
-      end
-
-      if auth[ :extra ][ :raw_info ][ :birthday ]
-        user.birthday = auth[ :extra ][ :raw_info ][ :birthday ].to_time
-      end
-
+    begin
+      user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
     end
 
     url = session[:return_to] || root_path
