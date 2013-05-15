@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_or_initialize_by( :uid => auth[:uid], :provider => auth[:provider] )
 
-    user.refresh_token = auth[ :credentials ][ :refresh_token ]
+    user.refresh_token = auth[ :credentials ][ :refresh_token ] if auth[ :credentials ][ :refresh_token ]
     user.access_token = auth[ :credentials ][ :token ]
     user.expires = auth[ :credentials ][ :expires_at ]
 
