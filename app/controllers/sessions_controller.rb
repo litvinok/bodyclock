@@ -19,9 +19,9 @@ class SessionsController < ApplicationController
         user.gender = auth[ :extra ][ :raw_info ][ :gender ]
       end
 
-      if auth[ :extra ][ :raw_info ][ :birthday ]
-        user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
-      end
+      #if auth[ :extra ][ :raw_info ][ :birthday ]
+      #  user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
+      #end
 
     end
 
