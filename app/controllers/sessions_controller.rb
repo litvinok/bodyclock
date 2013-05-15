@@ -17,10 +17,12 @@ class SessionsController < ApplicationController
 
     begin
       user.gender = auth[ :extra ][ :raw_info ][ :gender ]
+    rescue
     end
 
     begin
       user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
+    rescue
     end
 
     url = session[:return_to] || root_path
