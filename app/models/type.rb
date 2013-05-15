@@ -1,11 +1,11 @@
 class Type
   include Mongoid::Document
 
-  has_many :event
+  has_many :value
 
+  field :uid, type: String
   field :name, type: String
-  field :model, type: String
 
-  index({ model: 1 }, { unique: true, background: true })
+  index({ uid: 1 }, { unique: true, background: true })
 
 end
