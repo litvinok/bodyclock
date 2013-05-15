@@ -15,8 +15,17 @@ class SessionsController < ApplicationController
     user.email = auth[ :info ][ :email ]
     user.avatar = auth[ :info ][ :image ]
 
-    user.gender = auth[ :extra ][ :raw_info ][ :gender ] rescue nil
-    user.birthday = auth[ :extra ][ :raw_info ][ :birthday ] rescue nil
+    begin
+      user.gender = auth[ :extra ][ :raw_info ][ :gender ]
+    rescue => ex
+      logger.debug "Can't get gender: #{ex.message}"
+    end
+
+    begin
+      user.birthday = auth[ :extra ][ :raw_info ][ :birthday ]
+    rescue => ex
+      logger.debug "Can't get gender: #{ex.message}"
+    end
 
     url = session[:return_to] || root_path
     session[:return_to] = nil
