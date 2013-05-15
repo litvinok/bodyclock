@@ -22,8 +22,7 @@ class SessionsController < ApplicationController
       end
 
       if auth[ :extra ][ :raw_info ][ :birthday ]
-        logger.info auth[ :extra ][ :raw_info ][ :birthday ]
-        user.birthday = DateTime.parse( auth[ :extra ][ :raw_info ][ :birthday ] )
+        user.birthday = auth[ :extra ][ :raw_info ][ :birthday ].to_time
       end
 
     end
