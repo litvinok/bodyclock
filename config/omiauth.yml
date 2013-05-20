@@ -23,8 +23,8 @@ production:
 
     yandex:
         name: Яндекс
-        app_id: 979e4559c7734a638222a41851fb6ab6
-        secret: d9de3dd060824f838f0f8b6d811fa809
+        app_id: bf570eddf8c441ecad67cb91c79acb58
+        secret: e9883f9ec09648469d0911aefc5dcfe4
 
     facebook:
         name: Facebook
