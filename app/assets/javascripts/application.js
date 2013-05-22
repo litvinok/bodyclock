@@ -28,25 +28,29 @@
 
 $(document).ready(function(){
 
-    var cal = $( '.calendar' ).calendar({
-        weekabbrs : [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
-        months : [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ]
-    });
+    var cal = $( '.calendar' ).empty().calendar({
+            weekabbrs : [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+            months : [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
+            onDayClick : function( $el, $contentEl, dateProperties ) {
 
-    function updateMonthYear() {
-        $('.date').text( cal.getMonthName() + ' ' + cal.getYear() );
-    }
+                    console.log( dateProperties );
 
-    updateMonthYear();
+            }
+        }),
+        updateCaption =  function () {
+            $('.date').text( cal.getMonthName() + ' ' + cal.getYear() );
+        };
 
     $('.calendar-next').click(function(){
-        cal.gotoNextMonth( updateMonthYear );
+        cal.gotoNextMonth( updateCaption );
         return false;
-    });
+    }).show();
 
     $('.calendar-prev').click(function(){
-        cal.gotoPreviousMonth( updateMonthYear );
+        cal.gotoPreviousMonth( updateCaption );
         return false;
-    });
+    }).show();
+
+    updateCaption();
 
 });

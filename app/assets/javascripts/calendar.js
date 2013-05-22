@@ -88,7 +88,7 @@
 			var head = this._getHead(),
 				body = this._getBody();
 
-			this.$el.html('').append( head, body );
+            this.$cal = this.$el.empty().append( head, body );
 
 			if( callback ) { callback.call(); }
 

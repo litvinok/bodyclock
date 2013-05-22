@@ -8,20 +8,20 @@
             <h4>
                 <span class="date"></span>
                 <div class="right">
-                    <a href="<%= root_path %>" class="calendar-prev"><i class="icon-left-open-big"></i></a>
-                    <a href="<%= root_path %>" class="calendar-next"><i class="icon-right-open-big"></i></a>
+                    <a href="<%= root_path %>" class="calendar-prev hidden"><i class="icon-left-open-big"></i></a>
+                    <a href="<%= root_path %>" class="calendar-next hidden"><i class="icon-right-open-big"></i></a>
                 </div>
             </h4>
 
             <div class="calendar">
-                Для работы необходимо включить JavaScript
+                Загрузка..
             </div>
 
         </div>
 
         <div class="three columns">
 
-            <h4 class="row">
+            <h4 class="row auth">
               <div class="two columns image"><img src="<%= auth.avatar %>" gumby-retina/></div>
               <div class="ten columns">&nbsp;<%= auth.name %></div>
             </h4>
