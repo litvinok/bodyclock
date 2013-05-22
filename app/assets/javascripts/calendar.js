@@ -61,25 +61,23 @@
 
 			var self = this;
 
-			this.$el.on( 'click.calendar', 'div.week > div', function() {
+
+			this.$el.find('div.week > div').click(function(){
 
 				var $cell = $( this ),
 					idx = $cell.index(),
 					$content = $cell.children( 'div' ),
 					dateProp = {
-						day : $cell.children( 'span.fc-date' ).text(),
-						month : self.month + 1,
-						monthname : self.options.displayMonthAbbr ? self.options.monthabbrs[ self.month ] : self.options.months[ self.month ],
-						year : self.year,
-						weekday : idx + self.options.startIn,
-						weekdayname : self.options.weeks[ idx + self.options.startIn ]
+						day : $cell.attr('d'),
+						month : $cell.attr('m'),
+						year : $cell.attr('y')
 					};
 
 				if( dateProp.day ) {
 					self.options.onDayClick( $cell, $content, dateProp );
 				}
 
-			} );
+			});
 
 		},
 		// Calendar logic based on http://jszen.blogspot.pt/2007/03/how-to-build-simple-calendar-with.html
@@ -129,8 +127,8 @@
                 pos = 0;                                                    // number of weekday
 
 
-            var createDayItem = function(n) {
-                return $('<div>').append( $('<label>').text(n) );
+            var createDayItem = function(d,m,y) {
+                return $('<div>').append( $('<label>').text(d)).attr({ d:d, m:m, y:y });
             }
 
             var pushToWeek = function (o) {
@@ -141,14 +139,14 @@
 
             while ( offset > 0 ) {
                 pushToWeek(
-                    createDayItem(1+last-(offset--))
+                    createDayItem(1+last-(offset--), this.month, this.year)
                         .addClass('prev')
                 );
             }
 
             while ( ++day <= count ) {
 
-                var item = createDayItem(day);
+                var item = createDayItem(day, this.month+1, this.year);
 
                 if ( curr && day === date ) item.addClass('today');
 
@@ -157,7 +155,7 @@
 
             while( pos > 0 && pos < 5 ) {
                 pushToWeek(
-                    createDayItem(++offset)
+                    createDayItem(++offset, this.month+2, this.year)
                         .addClass('next')
                 );
             }
