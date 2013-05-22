@@ -48,6 +48,11 @@
 
 @media screen and (max-width: 480px){
 
+  .calendar {
+    height: 200px;
+    overflow-y:scroll;
+  }
+
   .calendar .legend {
     position: absolute;
     top:-999999px;
@@ -61,8 +66,9 @@
 
   .calendar .week a,
   .calendar .week div {
-    width: 50%;
-    height: 2em;
+    width: 100%;
+    float: nont;
+    height: 3em;
   }
 }
 
