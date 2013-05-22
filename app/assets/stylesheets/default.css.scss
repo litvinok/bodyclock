@@ -91,6 +91,7 @@
   .calendar .legend,
   .footer p,
   .navbar {
+    display: none;
     position: absolute;
     top:-999999px;
   }
@@ -103,8 +104,9 @@
 
   .calendar .week a,
   .calendar .week div {
-    width: 100%;
+    width: 96%;
     float: nont;
+    display: block;
     height: 3em;
   }
 }
