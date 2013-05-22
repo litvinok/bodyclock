@@ -24,3 +24,29 @@
 //= require ui/jquery.validation
 
 //= require_tree .
+
+
+$(document).ready(function(){
+
+    var cal = $( '.calendar' ).calendar({
+        weekabbrs : [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+        months : [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ]
+    });
+
+    function updateMonthYear() {
+        $('.date').text( cal.getMonthName() + ' ' + cal.getYear() );
+    }
+
+    updateMonthYear();
+
+    $('.calendar-next').click(function(){
+        cal.gotoNextMonth( updateMonthYear );
+        return false;
+    });
+
+    $('.calendar-prev').click(function(){
+        cal.gotoPreviousMonth( updateMonthYear );
+        return false;
+    });
+
+});

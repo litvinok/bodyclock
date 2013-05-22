@@ -53,6 +53,8 @@ Bodyclock::Application.routes.draw do
   root :to => 'default#index'
   match 'about' => 'default#about'
 
+  resources :api
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 

@@ -6,32 +6,15 @@
         <div class="nine columns">
 
             <h4>
-                <%= @calendar[:current][:name] %> <%= @calendar[:current][:year] %>
+                <span class="date"></span>
                 <div class="right">
-                    <a href="/<%= @calendar[:prev][:year] %>/<%= @calendar[:prev][:month] %>/"><i  class="icon-left-open-big"></i></a>
-                    <a href="/<%= @calendar[:next][:year] %>/<%= @calendar[:next][:month] %>/"><i class="icon-right-open-big"></i></a>
+                    <a href="<%= root_path %>" class="calendar-prev"><i class="icon-left-open-big"></i></a>
+                    <a href="<%= root_path %>" class="calendar-next"><i class="icon-right-open-big"></i></a>
                 </div>
             </h4>
 
             <div class="calendar">
-
-                <div class="legend">
-                    <% @calendar[:label].each do |label| %>
-                        <div><%= label[:abbr] %></div>
-                    <% end %>
-                </div>
-
-
-                <% @calendar[:weeks].each do |week_number, week| %>
-
-                    <div class="week">
-                        <% week.each do |day| %>
-                            <% @a = [:today, :next, :prev].select{ |o| o if day[o] } %>
-                            <a href="/<%= day[:year] %>/<%= day[:month] %>/<%= day[:day] %>" class="<%= @a.join(' ') %>"><%= day[:day] %></a>
-                        <% end %>
-                    </div>
-
-                <% end %>
+                Для работы необходимо включить JavaScript
             </div>
 
         </div>
