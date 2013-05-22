@@ -46,38 +46,6 @@
   color: white
 }
 
-@media screen and (max-width: 480px){
-
-  .calendar {
-    height: 200px;
-    overflow-y:scroll;
-  }
-
-  .calendar .legend {
-    position: absolute;
-    top:-999999px;
-  }
-
-  .calendar .week .prev,
-  .calendar .week .next,
-  {
-    display: none;
-  }
-
-  .calendar .week a,
-  .calendar .week div {
-    width: 100%;
-    float: nont;
-    height: 3em;
-  }
-}
-
-@media screen and (max-width: 767px){
-  .auth {
-    display: none;
-  }
-}
-
 
 .right {
   float: right;
@@ -104,4 +72,39 @@
 .footer p {
   margin-top: .8em;
   font-size: 8pt;
+}
+
+@media screen and (max-width: 767px){
+  .auth {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px){
+
+  html { padding-top: 0; }
+
+  .footer {
+    margin-top: 2em;
+  }
+
+  .calendar .legend,
+  .footer p,
+  .navbar {
+    position: absolute;
+    top:-999999px;
+  }
+
+  .calendar .week .prev,
+  .calendar .week .next,
+  {
+    display: none;
+  }
+
+  .calendar .week a,
+  .calendar .week div {
+    width: 100%;
+    float: nont;
+    height: 3em;
+  }
 }
