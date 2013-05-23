@@ -37,20 +37,40 @@ $(document).ready(function(){
 
             }
         }),
-        updateCaption =  function () {
+        update =  function () {
             $('.date').text( cal.getMonthName() + ' ' + cal.getYear() );
+
+            var data = {
+                from: new Date(cal.getYear(), cal.getMonth() - 1, 1),
+                to: new Date(cal.getYear(), cal.getMonth() + 1, 0)
+            };
+
+            $.ajax({
+                dataType: "json",
+                url: "/api/events.json",
+                data: data,
+                success: function( data ){
+                    $.each(data, function(){
+                        var d = new Date(this.date);
+                        $('.calendar .week div#'+ d.getYear() + '-' + d.getMonth() + '-' + d.getDate() ).css({
+                            border: '1px solid black'
+                        })
+                    });
+
+                }
+            });
         };
 
     $('.calendar-next').click(function(){
-        cal.gotoNextMonth( updateCaption );
+        cal.gotoNextMonth( update );
         return false;
     }).show();
 
     $('.calendar-prev').click(function(){
-        cal.gotoPreviousMonth( updateCaption );
+        cal.gotoPreviousMonth( update );
         return false;
     }).show();
 
-    updateCaption();
+    update();
 
 });
