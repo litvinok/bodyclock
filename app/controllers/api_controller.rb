@@ -2,12 +2,17 @@ class ApiController < ApplicationController
 
   def index
 
-    msg = {}
+    @info = {
+        :version => 1.0,
+        :server => {
+            :time => Time.now
+        }
+    }
 
     respond_to do |format|
-
-      format.json { render :json => msg }
-      format.xml  { render :xml => msg }
+      format.html { render }
+      format.json { render :json => @info }
+      format.xml  { render :xml => @info }
     end
 
   end

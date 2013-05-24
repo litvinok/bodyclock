@@ -128,7 +128,8 @@
 
 
             var createDayItem = function(d,m,y) {
-                return $('<div>').append( $('<label>').text(d)).attr({ id: y + '-' + m + '-' + d });
+                return $('<div>').append( $('<label>').text(d)).attr({
+                    id: y + '-' + m.toMonthNumber() + '-' + d.toDateNumber() });
             }
 
             var pushToWeek = function (o) {

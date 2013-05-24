@@ -1,0 +1,66 @@
+.calendar .week a,
+.calendar .week div,
+.calendar .legend div {
+  width: 13.5%;
+  float: left;
+  margin: 0 0.7857% 0.7857% 0;
+
+}
+
+.calendar .week a {
+  color: lighten(black, 60%);
+}
+
+.calendar .legend {
+  margin-top: 1rem;
+  color: rgba(0,0,0, 0.3%);
+}
+
+.calendar .week a,
+.calendar .week div{
+  height: 80px;
+  background: rgba(0,0,0,0.05%);
+  padding: 0px 5px;
+}
+
+.calendar .week a:hover {
+  outline: 1px solid darkorange;
+}
+
+.calendar .week .prev,
+.calendar .week .next,
+{
+  opacity: 0.4;
+}
+
+.calendar .week .today {
+  background: lighten(darkorange, 10%);
+  color: white
+}
+
+.calendar .week .event {
+  outline: 1px solid rgba(255,0,255,0.5);
+}
+
+@media screen and (max-width: 320px){
+
+  .calendar .legend {
+    display: none;
+    position: absolute;
+    top:-999999px;
+  }
+
+  .calendar .week .prev,
+  .calendar .week .next,
+  {
+    display: none;
+  }
+
+  .calendar .week a,
+  .calendar .week div {
+    width: 96%;
+    float: nont;
+    display: block;
+    height: 3em;
+  }
+}

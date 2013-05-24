@@ -7,6 +7,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+include Mongoid::Document
+
 Type.create( name: 'Температура', uid: 'temperature' )
 Type.create( name: 'Вес', uid: 'weight' )
 

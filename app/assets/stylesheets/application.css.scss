@@ -10,3 +10,52 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700&subset=cyrillic);
 
 html { font-size: 13px; padding-top: 2em; }
+
+.hidden { display: none; }
+.right { float: right; }
+
+
+.navbar li.current {
+  background: lighten(black, 27%);
+}
+
+.footer {
+  font-size: 10pt;
+  margin: 5em 0 1em;
+  padding: 1em 0 0;
+  border-top: 1px solid #ededed;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+.footer p {
+  margin-top: .8em;
+  font-size: 8pt;
+}
+
+
+@media screen and (max-width: 767px){
+  .auth {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 320px){
+
+  html { padding-top: 0; }
+
+  .footer {
+    margin-top: 2em;
+  }
+
+  .footer p,
+  .navbar {
+    display: none;
+    position: absolute;
+    top:-999999px;
+  }
+}

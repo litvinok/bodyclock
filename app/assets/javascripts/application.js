@@ -26,6 +26,10 @@
 //= require_tree .
 
 
+Number.prototype.toMonthNumber = Number.prototype.toDateNumber = function() {
+    return this > 10 ? this : '0' + this;
+}
+
 $(document).ready(function(){
 
     var cal = $( '.calendar' ).empty().calendar({
@@ -51,10 +55,7 @@ $(document).ready(function(){
                 data: data,
                 success: function( data ){
                     $.each(data, function(){
-                        var d = new Date(this.date);
-                        $('.calendar .week div#'+ d.getYear() + '-' + d.getMonth() + '-' + d.getDate() ).css({
-                            border: '1px solid black'
-                        })
+                        $('.calendar .week div#'+ this.date ).addClass('event');
                     });
 
                 }
