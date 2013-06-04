@@ -66,17 +66,14 @@
 
 				var $cell = $( this ),
 					idx = $cell.index(),
+                    dateArray = $cell.attr('id').split('-'),
 					$content = $cell.children( 'div' ),
 					dateProp = {
-						day : $cell.attr('d'),
-						month : $cell.attr('m'),
-						year : $cell.attr('y')
+                        year: parseInt(dateArray[0]),
+                        month : parseInt(dateArray[1]),
+						day : parseInt(dateArray[2])
 					};
-
-				if( dateProp.day ) {
-					self.options.onDayClick( $cell, $content, dateProp );
-				}
-
+                self.options.onDayClick( $cell, $content, dateProp );
 			});
 
 		},
@@ -129,7 +126,8 @@
 
             var createDayItem = function(d,m,y) {
                 return $('<div>').append( $('<label>').text(d)).attr({
-                    id: y + '-' + m.toMonthNumber() + '-' + d.toDateNumber() });
+                    id: y + '-' + m.toMonthNumber() + '-' + d.toDateNumber()
+                });
             }
 
             var pushToWeek = function (o) {
