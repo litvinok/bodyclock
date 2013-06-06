@@ -54,6 +54,7 @@ Bodyclock::Application.routes.draw do
   match 'about' => 'default#about'
 
   resources :api do
+    get 'between', :on => :collection
     get 'events', :on => :collection
   end
 

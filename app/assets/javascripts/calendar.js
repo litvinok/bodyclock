@@ -61,8 +61,7 @@
 
 			var self = this;
 
-
-			this.$el.find('div.week > div').click(function(){
+			this.$el.find('div.week > div').on('click', function(){
 
 				var $cell = $( this ),
 					idx = $cell.index(),
@@ -219,6 +218,7 @@
 			}
 
 			this._generateTemplate( callback );
+            this._initEvents();
 
 		},
 		/************************* 

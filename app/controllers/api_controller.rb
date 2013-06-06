@@ -17,7 +17,7 @@ class ApiController < ApplicationController
 
   end
 
-  def events
+  def between
 
     offset = 2.month
     from = params[:from] ? Date.parse( params[:from] ) : Time.now - offset
@@ -40,5 +40,21 @@ class ApiController < ApplicationController
     #@item.save
 
   end
+
+  def events
+
+    @items = Event.where(
+        :date => Date.parse( params[:date] ),
+        :user => session[:user_id]
+    )
+
+    respond_to do |format|
+
+      format.json { render :json => @items }
+      format.xml  { render :xml => @items }
+    end
+
+  end
+
 
 end

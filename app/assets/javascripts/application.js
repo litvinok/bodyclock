@@ -23,26 +23,39 @@
 //= require ui/gumby.toggleswitch
 //= require ui/jquery.validation
 
+//= require jquery-tmpl
+//= require_tree ./templates
+
 //= require_tree .
 
 
-Number.prototype.toMonthNumber = Number.prototype.toDateNumber = function() {
+Number.prototype.toMonthNumber = Number.prototype.toDateNumber = function () {
     return this > 10 ? this : '0' + this;
 }
 
-$(document).ready(function(){
+Date.prototype.getQueryDate = function(){
+    return this.getFullYear() + '-' +
+        this.getMonth() + '-' +
+        this.getDate();
+}
 
-    var cal = $( '.calendar' ).empty().calendar({
-            weekabbrs : [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
-            months : [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
-            onDayClick : function( $el, $contentEl, dateProperties ) {
+$(document).ready(function () {
 
-                    console.log( dateProperties );
+    var months = [ 'Январь', 'Февраль', 'Март',
+            'Апрель', 'Май', 'Июнь', 'Июль', 'Август',
+            'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
 
-            }
-        }),
-        update =  function () {
-            $('.date').text( cal.getMonthName() + ' ' + cal.getYear() );
+    // PREPARE ROOT FOR INSERT EVENTS
+    // --------------------------------------------------------------------------------------------------------
+
+        main = $('<div></div>').attr({ id: (new Date()).getTime() }).html($('.calendar').parent().html()),
+        root = $('.calendar').parent().empty().html(main),
+
+    // UPDATE INFORMATION ABOUT CURRENT MONTH
+    // --------------------------------------------------------------------------------------------------------
+
+        onMonthUpdate = function () {
+            $('.date').text(cal.getMonthName() + ' ' + cal.getYear());
 
             var data = {
                 from: new Date(cal.getYear(), cal.getMonth() - 1, 1),
@@ -51,27 +64,78 @@ $(document).ready(function(){
 
             $.ajax({
                 dataType: "json",
-                url: "/api/events.json",
+                url: "/api/between.json",
                 data: data,
-                success: function( data ){
-                    $.each(data, function(){
-                        $('.calendar .week div#'+ this.date ).addClass('event');
+                success: function (data) {
+                    $.each(data, function () {
+                        $('.calendar .week div#' + this.date).addClass('event');
                     });
 
                 }
             });
+        },
+
+    // CLICK ON DAY
+    // --------------------------------------------------------------------------------------------------------
+
+        onDayClick = function ($el, $content, prop) {
+
+            var data = {
+                date: (new Date(prop.year, prop.month, prop.day)).getQueryDate()
+            };
+
+            $.ajax({
+                dataType: "json",
+                url: "/api/events.json",
+                data: data,
+                success: function (data) {
+
+                    $.tmpl("templates/event", {
+                        day: prop.day,
+                        month_name: months[prop.month],
+                        year: prop.year,
+                        events: data
+                    }).appendTo(root);
+
+                    main.hide();
+                }
+            });
         };
 
-    $('.calendar-next').click(function(){
-        cal.gotoNextMonth( update );
+    // BUTTONS ON EVENT FORM
+    // --------------------------------------------------------------------------------------------------------
+
+    $(document).on('click', '.event .close a', function () {
+
+        $(this).parents('.event').remove();
+        main.show();
+
+        return false;
+    });
+
+    // BUTTONS PREV OR NEXT MONTH
+    // --------------------------------------------------------------------------------------------------------
+
+    $('.calendar-next').click(function () {
+        cal.gotoNextMonth(onMonthUpdate);
         return false;
     }).show();
 
-    $('.calendar-prev').click(function(){
-        cal.gotoPreviousMonth( update );
+    $('.calendar-prev').click(function () {
+        cal.gotoPreviousMonth(onMonthUpdate);
         return false;
     }).show();
 
-    update();
+
+    // USE CALENDAR
+    // --------------------------------------------------------------------------------------------------------
+
+    var cal = $('.calendar').empty().calendar({
+        weekabbrs: [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+        months: months,
+        onDayClick: onDayClick
+    });
+
+    onMonthUpdate();
 
 });
