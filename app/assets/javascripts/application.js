@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-tmpl
 //= require gumby
 
 //= require ui/gumby.checkbox
@@ -22,9 +23,6 @@
 //= require ui/gumby.tabs
 //= require ui/gumby.toggleswitch
 //= require ui/jquery.validation
-
-//= require jquery-tmpl
-//= require_tree ./templates
 
 //= require_tree .
 
